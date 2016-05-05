@@ -11,6 +11,6 @@ import Foundation
 
 enum CollectionItem {
     case Color(UIColor)
-    case Text(String)
-    case EditingText(String)
+    case Text(question: String, answer: String)
+    case EditingText(question: String, answer: String)
 }

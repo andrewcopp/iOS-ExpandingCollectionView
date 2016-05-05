@@ -10,7 +10,7 @@ import UIKit
 
 class CollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
-    var items: [CollectionItem] = [.Color(UIColor.redColor()), .Color(UIColor.orangeColor()), .Text("Would you rather...?"), .Color(UIColor.yellowColor()), .Color(UIColor.greenColor()), .Text("What's your favorite neighborhood?"), .Color(UIColor.blueColor()), .Color(UIColor.purpleColor())]
+    var items: [CollectionItem] = [.Color(UIColor.redColor()), .Color(UIColor.orangeColor()), .Text(question: "Would you rather...?", answer: "Yes"), .Color(UIColor.yellowColor()), .Color(UIColor.greenColor()), .Text(question: "What's your favorite neighborhood?", answer: "West Village"), .Color(UIColor.blueColor()), .Color(UIColor.purpleColor())]
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -43,19 +43,20 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ColorCellIdentifier, forIndexPath: indexPath)
             cell.backgroundColor = color
             return cell
-        case .Text(let text):
+        case .Text(let question, _):
             guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(TextCellIdentifier, forIndexPath: indexPath) as? TextCell else {
                 fatalError()
             }
             cell.backgroundColor = UIColor.whiteColor()
-            cell.questionLabel.text = text
+            cell.questionLabel.text = question
             return cell
-        case .EditingText(let text):
+        case .EditingText(let question, let answer):
             guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(EditingTextCellIdentifier, forIndexPath: indexPath) as? EditingTextCell else {
                 fatalError()
             }
             cell.backgroundColor = UIColor.whiteColor()
-            cell.questionLabel.text = text
+            cell.questionLabel.text = question
+            cell.answerTextView.text = answer
             return cell
         }
         
@@ -65,13 +66,13 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     
-        guard case .Text(let text) = items[indexPath.row] else {
+        guard case .Text(let question, let answer) = items[indexPath.row] else {
             return
         }
         
         collectionView.scrollEnabled = false
         
-        items[indexPath.row] = CollectionItem.EditingText(text)
+        items[indexPath.row] = CollectionItem.EditingText(question: question, answer: answer)
         
         let updates = {
             collectionView.deleteItemsAtIndexPaths([indexPath])
@@ -90,11 +91,11 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         
-        guard case .EditingText(let text) = items[indexPath.row] else {
+        guard case .EditingText(let question, let answer) = items[indexPath.row] else {
             return
         }
         
-        items[indexPath.row] = CollectionItem.Text(text)
+        items[indexPath.row] = CollectionItem.Text(question: question, answer: answer)
         
         let updates = {
             collectionView.deleteItemsAtIndexPaths([indexPath])
