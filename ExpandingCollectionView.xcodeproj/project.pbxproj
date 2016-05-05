@@ -16,6 +16,7 @@
 		57DF9ADD1CDAE0BF003CA294 /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DF9ADC1CDAE0BF003CA294 /* ColorCell.swift */; };
 		57DF9ADF1CDAE0CD003CA294 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DF9ADE1CDAE0CD003CA294 /* TextCell.swift */; };
 		57DF9AE11CDAE0E1003CA294 /* EditTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DF9AE01CDAE0E1003CA294 /* EditTextCell.swift */; };
+		57DF9AE31CDBBCDA003CA294 /* CollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DF9AE21CDBBCDA003CA294 /* CollectionViewFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		57DF9ADC1CDAE0BF003CA294 /* ColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
 		57DF9ADE1CDAE0CD003CA294 /* TextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		57DF9AE01CDAE0E1003CA294 /* EditTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTextCell.swift; sourceTree = "<group>"; };
+		57DF9AE21CDBBCDA003CA294 /* CollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				57DF9ADC1CDAE0BF003CA294 /* ColorCell.swift */,
 				57DF9ADE1CDAE0CD003CA294 /* TextCell.swift */,
 				57DF9AE01CDAE0E1003CA294 /* EditTextCell.swift */,
+				57DF9AE21CDBBCDA003CA294 /* CollectionViewFlowLayout.swift */,
 			);
 			path = ExpandingCollectionView;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57DF9AE31CDBBCDA003CA294 /* CollectionViewFlowLayout.swift in Sources */,
 				57DF9ADF1CDAE0CD003CA294 /* TextCell.swift in Sources */,
 				57DF9AD51CDABF97003CA294 /* CollectionViewController.swift in Sources */,
 				57DF9AE11CDAE0E1003CA294 /* EditTextCell.swift in Sources */,

@@ -72,7 +72,8 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         items[indexPath.row] = CollectionItem.EditingText(text)
         
         let updates = {
-            collectionView.reloadItemsAtIndexPaths([indexPath])
+            collectionView.deleteItemsAtIndexPaths([indexPath])
+            collectionView.insertItemsAtIndexPaths([indexPath])
         }
         
         collectionView.performBatchUpdates(updates) { finished in
@@ -89,7 +90,8 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         items[indexPath.row] = CollectionItem.Text(text)
         
         let updates = {
-            collectionView.reloadItemsAtIndexPaths([indexPath])
+            collectionView.deleteItemsAtIndexPaths([indexPath])
+            collectionView.insertItemsAtIndexPaths([indexPath])
         }
         
         collectionView.performBatchUpdates(updates) { finished in
