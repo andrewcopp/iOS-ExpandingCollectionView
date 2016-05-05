@@ -72,11 +72,10 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         items[indexPath.row] = CollectionItem.EditingText(text)
         
         let updates = {
-            collectionView.collectionViewLayout.invalidateLayout()
+            collectionView.reloadItemsAtIndexPaths([indexPath])
         }
         
         collectionView.performBatchUpdates(updates) { finished in
-            collectionView.reloadItemsAtIndexPaths([indexPath])
             collectionView.selectItemAtIndexPath(indexPath, animated: false, scrollPosition: UICollectionViewScrollPosition.None)
         }
     }
@@ -90,11 +89,10 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         items[indexPath.row] = CollectionItem.Text(text)
         
         let updates = {
-            collectionView.collectionViewLayout.invalidateLayout()
+            collectionView.reloadItemsAtIndexPaths([indexPath])
         }
         
         collectionView.performBatchUpdates(updates) { finished in
-            collectionView.reloadItemsAtIndexPaths([indexPath])
             collectionView.scrollEnabled = true
         }
     }
