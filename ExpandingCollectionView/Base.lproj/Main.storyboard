@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7qD-tS-ZOH">
-                                <rect key="frame" x="0.0" y="-200" width="600" height="1000"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JAM-x0-3Li" customClass="CollectionViewFlowLayout" customModule="ExpandingCollectionView" customModuleProvider="target">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -124,9 +124,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="7qD-tS-ZOH" secondAttribute="trailing" id="81f-JL-giy"/>
-                            <constraint firstItem="3eH-Ab-3F8" firstAttribute="top" secondItem="7qD-tS-ZOH" secondAttribute="bottom" constant="-200" id="PGH-hg-tyu"/>
+                            <constraint firstItem="3eH-Ab-3F8" firstAttribute="top" secondItem="7qD-tS-ZOH" secondAttribute="bottom" id="PGH-hg-tyu"/>
                             <constraint firstItem="7qD-tS-ZOH" firstAttribute="leading" secondItem="kOW-ev-h7Q" secondAttribute="leading" id="bfF-d4-l8j"/>
-                            <constraint firstItem="7qD-tS-ZOH" firstAttribute="top" secondItem="kOW-ev-h7Q" secondAttribute="top" constant="-200" id="n2Y-Rt-G0O"/>
+                            <constraint firstItem="7qD-tS-ZOH" firstAttribute="top" secondItem="kOW-ev-h7Q" secondAttribute="top" id="n2Y-Rt-G0O"/>
                         </constraints>
                     </view>
                     <connections>

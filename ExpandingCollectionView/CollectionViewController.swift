@@ -20,9 +20,6 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         super.viewDidLoad()
         
         collectionView?.allowsMultipleSelection = true
-        
-        collectionView.contentInset.top = 200.0
-        collectionView.contentInset.bottom = 200.0
     }
 
     // MARK: UICollectionViewDataSource
@@ -80,7 +77,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         }
         
         if let frame = collectionView.cellForItemAtIndexPath(indexPath)?.frame {
-            let verticalOffset = CGRectGetMinY(frame) - CollectionViewControllerEditingOffset - collectionView.contentInset.top - collectionView.contentInset.bottom
+            let verticalOffset = CGRectGetMinY(frame) - CollectionViewControllerEditingOffset
             let scrollRect = CGRect(origin: CGPoint(x: 0.0, y: verticalOffset), size: collectionView.bounds.size)
             collectionView.scrollRectToVisible(scrollRect, animated: true)
         }
