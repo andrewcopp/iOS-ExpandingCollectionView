@@ -8,6 +8,8 @@
 
 import UIKit
 
+let CollectionViewControllerEditingOffset: CGFloat = 100.0
+
 class CollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     var items: [CollectionItem] = [.Color(UIColor.redColor()), .Color(UIColor.orangeColor()), .Text(question: "Would you rather...?", answer: "Yes"), .Color(UIColor.yellowColor()), .Color(UIColor.greenColor()), .Text(question: "What's your favorite neighborhood?", answer: "West Village"), .Color(UIColor.blueColor()), .Color(UIColor.purpleColor())]
@@ -78,7 +80,8 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         }
         
         if let frame = collectionView.cellForItemAtIndexPath(indexPath)?.frame {
-            let scrollRect = CGRect(origin: CGPoint(x: 0.0, y: CGRectGetMinY(frame) - 100.0 - collectionView.contentInset.top - collectionView.contentInset.bottom), size: collectionView.bounds.size)
+            let verticalOffset = CGRectGetMinY(frame) - CollectionViewControllerEditingOffset - collectionView.contentInset.top - collectionView.contentInset.bottom
+            let scrollRect = CGRect(origin: CGPoint(x: 0.0, y: verticalOffset), size: collectionView.bounds.size)
             collectionView.scrollRectToVisible(scrollRect, animated: true)
         }
         
