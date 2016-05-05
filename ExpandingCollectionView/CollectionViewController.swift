@@ -18,6 +18,9 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         super.viewDidLoad()
         
         collectionView?.allowsMultipleSelection = true
+        
+        collectionView.contentInset.top = 200.0
+        collectionView.contentInset.bottom = 200.0
     }
 
     // MARK: UICollectionViewDataSource
@@ -75,7 +78,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         }
         
         if let frame = collectionView.cellForItemAtIndexPath(indexPath)?.frame {
-            let scrollRect = CGRect(origin: CGPoint(x: 0.0, y: CGRectGetMinY(frame) - 100.0), size: collectionView.bounds.size)
+            let scrollRect = CGRect(origin: CGPoint(x: 0.0, y: CGRectGetMinY(frame) - 100.0 - collectionView.contentInset.top - collectionView.contentInset.bottom), size: collectionView.bounds.size)
             collectionView.scrollRectToVisible(scrollRect, animated: true)
         }
         
