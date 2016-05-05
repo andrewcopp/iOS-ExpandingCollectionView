@@ -1,5 +1,5 @@
 //
-//  EditTextCell.swift
+//  EditingTextCell.swift
 //  ExpandingCollectionView
 //
 //  Created by Andrew Copp on 5/4/16.
@@ -8,8 +8,11 @@
 
 import UIKit
 
-let EditTextCellIdentifier = "EditTextCell"
+let EditingTextCellIdentifier = "EditingTextCell"
 
-class EditTextCell: UICollectionViewCell {
+class EditingTextCell: UICollectionViewCell {
+    
+    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var answerTextView: UITextView!
     
 }

@@ -52,8 +52,11 @@
                                     <constraint firstAttribute="trailingMargin" secondItem="3dS-GQ-0MI" secondAttribute="trailing" id="KRt-AR-CjX"/>
                                 </constraints>
                                 <size key="customSize" width="600" height="100"/>
+                                <connections>
+                                    <outlet property="questionLabel" destination="3dS-GQ-0MI" id="krF-Na-Au0"/>
+                                </connections>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EditTextCell" id="cKR-DE-ylQ" customClass="EditTextCell" customModule="ExpandingCollectionView" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EditingTextCell" id="cKR-DE-ylQ" customClass="EditingTextCell" customModule="ExpandingCollectionView" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="220" width="600" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -69,13 +72,12 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Khv-mZ-Dlw">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Super witty sample answer." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Khv-mZ-Dlw">
                                                     <rect key="frame" x="0.0" y="29" width="584" height="60"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="kKI-Gw-EqB"/>
                                                     </constraints>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -100,6 +102,10 @@
                                     <constraint firstAttribute="trailingMargin" secondItem="nuH-Vv-7Ve" secondAttribute="trailing" id="iEw-Ee-7lD"/>
                                 </constraints>
                                 <size key="customSize" width="600" height="100"/>
+                                <connections>
+                                    <outlet property="answerTextView" destination="Khv-mZ-Dlw" id="bM2-sF-heu"/>
+                                    <outlet property="questionLabel" destination="zkp-3r-G2B" id="zDI-z7-FkT"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>

@@ -41,13 +41,19 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ColorCellIdentifier, forIndexPath: indexPath)
             cell.backgroundColor = color
             return cell
-        case .Text(_):
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(TextCellIdentifier, forIndexPath: indexPath)
+        case .Text(let text):
+            guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(TextCellIdentifier, forIndexPath: indexPath) as? TextCell else {
+                fatalError()
+            }
             cell.backgroundColor = UIColor.whiteColor()
+            cell.questionLabel.text = text
             return cell
-        case .EditingText(_):
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(EditTextCellIdentifier, forIndexPath: indexPath)
+        case .EditingText(let text):
+            guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(EditingTextCellIdentifier, forIndexPath: indexPath) as? EditingTextCell else {
+                fatalError()
+            }
             cell.backgroundColor = UIColor.whiteColor()
+            cell.questionLabel.text = text
             return cell
         }
         

@@ -12,4 +12,6 @@ let TextCellIdentifier = "TextCell"
 
 class TextCell: UICollectionViewCell {
     
+    @IBOutlet weak var questionLabel: UILabel!
+    
 }
