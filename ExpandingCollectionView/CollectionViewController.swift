@@ -8,9 +8,11 @@
 
 import UIKit
 
-class CollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class CollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     var items: [CollectionItem] = [.Color(UIColor.redColor()), .Color(UIColor.orangeColor()), .Text("Would you rather...?"), .Color(UIColor.yellowColor()), .Color(UIColor.greenColor()), .Text("What's your favorite neighborhood?"), .Color(UIColor.blueColor()), .Color(UIColor.purpleColor())]
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,16 +27,16 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
 
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         switch items[indexPath.row] {
         case .Color(let color):
@@ -61,7 +63,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
 
     // MARK: UICollectionViewDelegate
 
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     
         guard case .Text(let text) = items[indexPath.row] else {
             return
@@ -81,7 +83,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         }
     }
     
-    override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         
         guard case .EditingText(let text) = items[indexPath.row] else {
             return
@@ -100,7 +102,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     }
 
     // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
         switch items[indexPath.row] {
         case .Color(_):
             return false
