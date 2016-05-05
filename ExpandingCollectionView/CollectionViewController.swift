@@ -78,6 +78,11 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             collectionView.insertItemsAtIndexPaths([indexPath])
         }
         
+        if let frame = collectionView.cellForItemAtIndexPath(indexPath)?.frame {
+            let scrollRect = CGRect(origin: CGPoint(x: 0.0, y: CGRectGetMinY(frame) - 100.0), size: collectionView.bounds.size)
+            collectionView.scrollRectToVisible(scrollRect, animated: true)
+        }
+        
         collectionView.performBatchUpdates(updates) { finished in
             collectionView.selectItemAtIndexPath(indexPath, animated: false, scrollPosition: UICollectionViewScrollPosition.None)
         }

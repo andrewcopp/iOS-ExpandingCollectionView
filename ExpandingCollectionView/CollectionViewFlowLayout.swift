@@ -27,7 +27,7 @@ class CollectionViewFlowLayout: UICollectionViewFlowLayout {
     }
     
     override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint) -> CGPoint {
-        return super.targetContentOffsetForProposedContentOffset(proposedContentOffset)
+        return proposedContentOffset
     }
     
     override func initialLayoutAttributesForAppearingItemAtIndexPath(itemIndexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
