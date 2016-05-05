@@ -92,11 +92,13 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         
-        guard case .EditingText(let question, let answer) = items[indexPath.row] else {
+        guard let editingTextCell = collectionView.cellForItemAtIndexPath(indexPath) as? EditingTextCell else {
             return
         }
         
-        items[indexPath.row] = CollectionItem.Text(question: question, answer: answer)
+        if let question = editingTextCell.questionLabel.text, let answer = editingTextCell.answerTextView.text {
+            items[indexPath.row] = CollectionItem.Text(question: question, answer: answer)
+        }
         
         let updates = {
             collectionView.deleteItemsAtIndexPaths([indexPath])
