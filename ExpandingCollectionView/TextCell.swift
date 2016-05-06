@@ -10,8 +10,8 @@ import UIKit
 
 let TextCellIdentifier = "TextCell"
 
-class TextCell: UICollectionViewCell {
+class TextCell: UICollectionViewCell, Dimmable {
     
     @IBOutlet weak var questionLabel: UILabel!
-    
+    var overlayView = UIView()
 }

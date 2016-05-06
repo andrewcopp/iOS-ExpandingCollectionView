@@ -40,7 +40,9 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         
         switch items[indexPath.row] {
         case .Color(let color):
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ColorCellIdentifier, forIndexPath: indexPath)
+            guard let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ColorCellIdentifier, forIndexPath: indexPath) as? ColorCell else {
+                fatalError()
+            }
             cell.backgroundColor = color
             return cell
         case .Text(let question, _):
@@ -61,7 +63,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         }
         
     }
-
+    
     // MARK: UICollectionViewDelegate
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -71,15 +73,19 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         }
         
         collectionView.scrollEnabled = false
+        let currentCell = collectionView.cellForItemAtIndexPath(indexPath)
         
         items[indexPath.row] = CollectionItem.EditingText(question: question, answer: answer)
         
         let updates = {
             collectionView.deleteItemsAtIndexPaths([indexPath])
             collectionView.insertItemsAtIndexPaths([indexPath])
+            collectionView.visibleCells().filter({ $0 != currentCell }).flatMap({($0 as? Dimmable)}).forEach {
+                $0.fadeInOverlayView()
+            }
         }
         
-        if let frame = collectionView.cellForItemAtIndexPath(indexPath)?.frame {
+        if let frame = currentCell?.frame {
             let verticalOffset = CGRectGetMinY(frame) - CollectionViewControllerEditingOffset - collectionView.contentInset.top - collectionView.contentInset.bottom
             let scrollRect = CGRect(origin: CGPoint(x: 0.0, y: verticalOffset), size: collectionView.bounds.size)
             collectionView.scrollRectToVisible(scrollRect, animated: true)
@@ -103,6 +109,10 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         let updates = {
             collectionView.deleteItemsAtIndexPaths([indexPath])
             collectionView.insertItemsAtIndexPaths([indexPath])
+            collectionView.visibleCells().flatMap({($0 as? Dimmable)}).forEach{
+                $0.fadeOutOverlayView()
+            }
+
         }
         
         collectionView.performBatchUpdates(updates) { finished in

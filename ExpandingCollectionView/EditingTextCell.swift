@@ -10,9 +10,9 @@ import UIKit
 
 let EditingTextCellIdentifier = "EditingTextCell"
 
-class EditingTextCell: UICollectionViewCell {
+class EditingTextCell: UICollectionViewCell, Dimmable {
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var answerTextView: UITextView!
-    
+    var overlayView = UIView()
 }

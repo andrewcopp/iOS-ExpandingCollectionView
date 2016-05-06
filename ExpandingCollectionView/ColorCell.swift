@@ -10,6 +10,6 @@ import UIKit
 
 let ColorCellIdentifier = "ColorCell"
 
-class ColorCell: UICollectionViewCell {
-    
+class ColorCell: UICollectionViewCell, Dimmable {
+    var overlayView = UIView()
 }
